@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.pradeep.hibernate.model.Payment" table="PAYMENT">
+		<id name="paymentId" column="pid" />
+		<property name="amount" column="amt" />
+
+		<joined-subclass name="com.pradeep.hibernate.model.CreditCard"
+			table="CreditCard">
+			<key column="dummy1" />
+			<property name="creditCardType" column="cctype" length="10" />
+		</joined-subclass>
+
+		<joined-subclass name="com.pradeep.hibernate.model.Cheque"
+			table="Cheque">
+			<key column="dummy2" />
+			<property name="chequeType" column="cqtype" length="10" />
+		</joined-subclass>
+
+	</class>
+</hibernate-mapping>
